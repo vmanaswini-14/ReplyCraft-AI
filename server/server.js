@@ -15,15 +15,32 @@ const PORT = process.env.PORT || 3000;
 // INITIALIZE GEMINI
 // ==========================================
 
-if (!process.env.GEMINI_API_KEY) {
+if (
+  !process.env.GEMINI_API_KEY &&
+  process.env.NODE_ENV !== "test"
+) {
   throw new Error(
     "GEMINI_API_KEY is missing from your .env file"
   );
 }
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-});
+const ai =
+  process.env.NODE_ENV === "test"
+    ? null
+    : new GoogleGenAI({
+        apiKey: process.env.GEMINI_API_KEY,
+      });
+
+      app.locals.generateContent = (prompt) => {
+  if (!ai) {
+    throw new Error("Gemini is unavailable in test mode.");
+  }
+
+  return ai.models.generateContent({
+    model: "gemini-3.5-flash-lite",
+    contents: prompt,
+  });
+};
 
 // ==========================================
 // MIDDLEWARE
@@ -271,10 +288,7 @@ Determine whether a reply is needed and follow all the rules above.
     // CALL GEMINI
     // ==========================================
 
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash-lite",
-      contents: prompt,
-    });
+   const response = await app.locals.generateContent(prompt);
 
     const output = response.text?.trim();
 
@@ -357,8 +371,12 @@ Determine whether a reply is needed and follow all the rules above.
 // START SERVER
 // ==========================================
 
-app.listen(PORT, "127.0.0.1", () => {
-  console.log(
-    `ReplyCraft AI running at http://127.0.0.1:${PORT}`
-  );
-});
+if (require.main === module) {
+  app.listen(PORT, "127.0.0.1", () => {
+    console.log(
+      `ReplyCraft AI running at http://127.0.0.1:${PORT}`
+    );
+  });
+}
+
+module.exports = app;
