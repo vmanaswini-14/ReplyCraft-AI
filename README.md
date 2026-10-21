@@ -1,3 +1,5 @@
+[![Backend Tests](https://github.com/vmanaswini-14/ReplyCraft-AI/actions/workflows/test.yml/badge.svg)](https://github.com/vmanaswini-14/ReplyCraft-AI/actions/workflows/test.yml)
+
 # ✉️ ReplyCraft AI
 
 ### Your AI-Powered Email Assistant for Gmail
