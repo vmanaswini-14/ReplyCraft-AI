@@ -2,23 +2,21 @@
 
 ### Your AI-Powered Email Assistant for Gmail
 
-ReplyCraft AI is a Chrome extension that uses Google Gemini AI to generate professional, context-aware email replies directly from Gmail. It helps users respond faster, customize their communication style, and insert AI-generated drafts into Gmail—with complete control over what gets sent.
+ReplyCraft AI is a Chrome extension that uses Google Gemini AI to generate professional, context-aware email replies directly from Gmail.
 
----
+Customize your writing tone, provide additional instructions, and insert AI-generated drafts into Gmail while keeping complete control over the final message.
 
 ## 🚀 Features
 
-- 🤖 **AI-Powered Reply Generation** — Generate email responses based on the original email's context.
-- 🎯 **Multiple Writing Tones** — Choose between Professional, Friendly, Formal, and Concise.
-- 📩 **Gmail Integration** — Load email content directly from Gmail.
-- 🧠 **Smart Reply Detection** — Identify emails that may not require a response.
-- ✍️ **Custom Instructions** — Personalize generated replies with additional instructions.
-- 🔄 **Regenerate Replies** — Generate another version when you want a different response.
-- 📋 **One-Click Copy** — Copy generated replies to your clipboard.
-- 💌 **Direct Draft Insertion** — Insert generated replies into Gmail's reply editor.
-- 🔒 **User-Controlled Sending** — Review and edit drafts before sending. The extension never automatically sends emails.
-
----
+- **AI-Powered Reply Generation:** Generate context-aware email responses.
+- **Multiple Writing Tones:** Choose Professional, Friendly, Formal, or Concise.
+- **Gmail Integration:** Load email content directly from Gmail.
+- **Smart Reply Detection:** Identify emails that may not require a response.
+- **Custom Instructions:** Personalize generated replies.
+- **Regenerate Replies:** Generate alternative responses.
+- **Copy to Clipboard:** Copy generated replies easily.
+- **Direct Draft Insertion:** Insert generated replies into Gmail's reply editor.
+- **User-Controlled Sending:** Review and edit drafts before sending. Emails are never automatically sent.
 
 ## 🛠️ Tech Stack
 
@@ -27,12 +25,10 @@ ReplyCraft AI is a Chrome extension that uses Google Gemini AI to generate profe
 | HTML5 | Extension interface |
 | CSS3 | Styling and layout |
 | JavaScript | Extension functionality |
-| Chrome Extension APIs | Browser integration and side panel |
+| Chrome Extension APIs | Browser integration |
 | Node.js | Backend runtime |
-| Express.js | API server |
-| Google Gemini API | AI-powered email reply generation |
-
----
+| Express.js | REST API server |
+| Google Gemini API | AI-powered reply generation |
 
 ## ⚙️ Installation and Setup
 
@@ -44,6 +40,99 @@ ReplyCraft AI is a Chrome extension that uses Google Gemini AI to generate profe
 
 ### 1. Clone the Repository
 
-```bash
 git clone https://github.com/vmanaswini-14/ReplyCraft-AI.git
 cd ReplyCraft-AI
+2. Install Backend Dependencies
+cd server
+npm install
+3. Configure Environment Variables
+
+Create a .env file inside the server directory.
+
+Add your API key:
+
+GEMINI_API_KEY=your_gemini_api_key
+
+Replace the placeholder with your own Gemini API key.
+
+Never commit or share your .env file or API key.
+
+4. Start the Backend
+
+From the server directory, run:
+
+node server.js
+
+The backend should start at:
+
+http://127.0.0.1:3000
+
+Keep the backend running while using the extension.
+
+5. Load the Chrome Extension
+Open Google Chrome.
+Navigate to chrome://extensions.
+Enable Developer mode.
+Click Load unpacked.
+Select the project folder containing manifest.json.
+Open Gmail and launch ReplyCraft AI.
+💡 How It Works
+Open Gmail and select an email.
+Load the email into ReplyCraft AI.
+Choose a preferred writing tone.
+Add optional instructions.
+Generate an AI-powered reply.
+Review, copy, regenerate, or insert the draft into Gmail.
+Edit the response if needed and send it yourself.
+
+ReplyCraft AI assists with drafting while leaving the final decision to the user.
+🏗️ Architecture
+
+           Gmail
+              |
+              v
+     Chrome Extension
+        Side Panel
+              |
+              v
+      Node.js + Express
+          Backend
+              |
+              v
+       Google Gemini API
+              |
+              v
+      Generated Reply
+              |
+              v
+       Gmail Reply Draft
+
+🔐 Security and Privacy
+API credentials are loaded through environment variables.
+.env files and node_modules are excluded using .gitignore.
+Generated replies are inserted as drafts for the user to review.
+The extension does not automatically send emails.
+Users should review AI-generated content before sending it.
+🎯 Project Highlights
+
+ReplyCraft AI demonstrates practical experience with:
+
+Chrome extension development
+Frontend and backend integration
+REST API development
+Generative AI integration
+Gmail interaction and browser automation
+Environment variable management
+Git and GitHub version control
+🔮 Future Improvements
+ Support additional email providers
+ Add reply-history management
+ Improve contextual personalization
+ Add automated testing and error handling
+ Explore easier extension distribution
+👩‍💻 Author
+
+Manaswini
+
+GitHub: @vmanaswini-14
+
