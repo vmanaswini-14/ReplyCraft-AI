@@ -10,7 +10,7 @@
   "scripting"
 ],
   "host_permissions": [
-    "http://127.0.0.1:3000/*",
+     "https://replycraft-ai.onrender.com/*",
     "https://mail.google.com/*"
   ],
   "background": {

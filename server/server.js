@@ -5,11 +5,23 @@
 require("dotenv").config();
 
 const express = require("express");
+const rateLimit = require("express-rate-limit");
 const cors = require("cors");
 const { GoogleGenAI } = require("@google/genai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const generateReplyLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error: "Too many requests. Please wait before trying again."
+  }
+});
+
 
 // ==========================================
 // INITIALIZE GEMINI
@@ -46,7 +58,22 @@ const ai =
 // MIDDLEWARE
 // ==========================================
 
-app.use(cors());
+const allowedOrigins = [
+  "chrome-extension://ecijebcjjnmimedlhmfmglcdlnnaohpe",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests without an Origin header, such as health checks.
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Origin not allowed by CORS"));
+    },
+  })
+);
 app.use(express.json({ limit: "100kb" }));
 
 // ==========================================
@@ -63,7 +90,8 @@ app.get("/", (req, res) => {
 // GENERATE EMAIL REPLY
 // ==========================================
 
-app.post("/generate-reply", async (req, res) => {
+app.post("/generate-reply", generateReplyLimiter, async (req, res) => {
+
   try {
     const { email, tone, instructions } = req.body;
 

@@ -94,23 +94,21 @@ async function generateReply() {
     "Analyzing the email and preparing your result..."
   );
 
-  try {
-    const response = await fetch(
-      "http://127.0.0.1:3000/generate-reply",
-      {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          email,
-          tone: toneSelect.value,
-          instructions: instructionsInput.value.trim(),
-        }),
-      }
-    );
+ try {
+  const response = await fetch(
+    "https://replycraft-ai.onrender.com/generate-reply",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        tone: toneSelect.value,
+        instructions: instructionsInput.value.trim(),
+      }),
+    }
+  );
 
     const data = await response.json();
 

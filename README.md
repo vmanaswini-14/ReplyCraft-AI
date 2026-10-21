@@ -67,7 +67,7 @@ node server.js
 
 The backend should start at:
 
-http://127.0.0.1:3000
+https://replycraft-ai.onrender.com
 
 Keep the backend running while using the extension.
 
