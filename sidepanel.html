@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReplyCraft AI</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="logo">R</div>
+      <div>
+        <h1>ReplyCraft</h1>
+        <p>Your AI email assistant</p>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <span class="sparkle">✦</span>
+      <h2>Write better emails.</h2>
+      <p>Professional replies, without the struggle.</p>
+    </section>
+    <section class="form-section">
+
+  <!-- Email input -->
+  <div class="field-heading">
+    <label for="email">Email to reply to</label>
+  </div>
+
+  <button id="load-gmail" type="button">
+    📩 Load email from Gmail
+  </button>
+
+  <textarea
+    id="email"
+    placeholder="Or paste the email you received here..."
+  ></textarea>
+
+  <!-- Reply tone -->
+  <label for="tone">Reply tone</label>
+
+  <select id="tone">
+    <option value="Professional">Professional</option>
+    <option value="Friendly">Friendly</option>
+    <option value="Formal">Formal</option>
+    <option value="Concise">Concise</option>
+  </select>
+
+  <!-- Optional instructions -->
+  <label for="instructions">Additional instructions <span class="optional">(optional)</span></label>
+
+  <textarea
+    id="instructions"
+    class="instructions"
+    placeholder="e.g. Politely ask for one more day..."
+  ></textarea>
+
+  <!-- Generate -->
+  <button id="generate" type="button">
+    <span>✦</span> Generate reply
+  </button>
+
+</section>
+
+   <section class="result-section">
+  <div class="result-heading">
+    <h3>Your reply</h3>
+
+    <button id="regenerate" type="button" disabled>
+      ↻ Regenerate
+    </button>
+
+    <button id="copy" class="copy-button" type="button">
+      Copy
+    </button>
+
+    <button id="insert-gmail" type="button">
+      Insert into Gmail
+    </button>
+  </div>
+
+  <div id="result" class="result">
+    <p class="placeholder">
+      Your AI-generated reply will appear here.
+    </p>
+  </div>
+</section>
+
+    <footer>Made with ✦ ReplyCraft AI</footer>
+  </main>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

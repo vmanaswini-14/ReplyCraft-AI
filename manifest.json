@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "ReplyCraft AI",
+  "version": "1.0.0",
+  "description": "Generate professional email replies with AI.",
+  "permissions": [
+  "sidePanel",
+  "clipboardWrite",
+  "activeTab",
+  "scripting"
+],
+  "host_permissions": [
+    "http://127.0.0.1:3000/*",
+    "https://mail.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*"
+      ],
+      "js": [
+        "gmail.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Open ReplyCraft AI"
+  }
+}
