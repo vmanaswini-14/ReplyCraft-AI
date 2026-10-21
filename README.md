@@ -76,6 +76,15 @@ Enable Developer mode.
 Click Load unpacked.
 Select the project folder containing manifest.json.
 Open Gmail and launch ReplyCraft AI.
+
+## 📸 Screenshots
+
+### AI-Powered Email Reply
+![ReplyCraft AI generating an email reply](replycraft-demo.png)
+
+### Smart Reply Detection
+![ReplyCraft AI detecting when a reply is unnecessary](no-reply-detection.png)
+
 💡 How It Works
 Open Gmail and select an email.
 Load the email into ReplyCraft AI.
