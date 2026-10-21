@@ -372,10 +372,8 @@ Determine whether a reply is needed and follow all the rules above.
 // ==========================================
 
 if (require.main === module) {
-  app.listen(PORT, "127.0.0.1", () => {
-    console.log(
-      `ReplyCraft AI running at http://127.0.0.1:${PORT}`
-    );
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`ReplyCraft AI running on port ${PORT}`);
   });
 }
 
